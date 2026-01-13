@@ -11,6 +11,7 @@ I am a senior undergraduate student majoring in Naval Architecture and Marine En
 
 This is a joint undergraduate program between China and the UK in which students are registered at both Harbin Institute of Technology (HIT) and the University of Strathclyde for all four years. Throughout the programme, courses designed by both HIT and Strathclyde are offered, with teaching delivered jointly by faculty from both universities. In the first two years, the curriculum is mainly based on HIT courses, while in the last two years, courses from Strathclyde take precedence. Students study at HIT for the first three years and at Strathclyde in the fourth year. Upon meeting the graduation requirements of both institutions, students are awarded dual bachelor’s degrees.
 
+
 ======
 Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
 
