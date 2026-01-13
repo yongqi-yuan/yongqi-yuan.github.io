@@ -24,13 +24,13 @@ repository               : "yongqi-yuan/yongqi-yuan.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "Yongqi Yuan"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "Glasgow, UK"
+  employer         : "Harbin Institute of Technology & University of Strathclyde"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "yongqi.yuan.phdapp26@outlook.com" 
 
   # Academic websites
   academia         : # URL
