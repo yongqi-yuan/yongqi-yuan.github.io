@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yongqi-yuan.com/sitemap.xml
