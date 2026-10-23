@@ -95,7 +95,3 @@ html.album-open,html.album-open body{overflow:hidden}
 .album-viewport{position:relative;height:100%;aspect-ratio:4/5;max-width:100%;overflow:hidden}
 .album-image{position:absolute;inset:0;width:100%;max-width:none;height:100%}
 @media print{.portrait-trigger{overflow:visible}}
-
-/* Lower the portrait frame slightly without changing the image crop. */
-.hero-image{top:12px}
-@media print{.hero-image{top:0}}
