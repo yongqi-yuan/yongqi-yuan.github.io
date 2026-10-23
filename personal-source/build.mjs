@@ -24,9 +24,9 @@ const hero = `<section id="about" class="hero" aria-labelledby="name">
       <p class="eyebrow"><span aria-hidden="true"></span> About</p>
       <h1 id="name">${esc(c.name)}</h1>
       <p class="post-nominals">${esc(c.postNominals)}</p>
-      <p class="hero-bio">I am currently a graduate student at the Department of Engineering Science and Lady Margaret Hall, University of Oxford.</p>
+      <p class="hero-bio">I am currently a graduate student in the Department of Engineering Science at the University of Oxford and a member of Lady Margaret Hall.</p>
       <p class="hero-bio">I study nonlinear wave forces and wave–structure interaction, combining computational fluid dynamics with theoretical analysis.</p>
-      <p class="hero-bio">I am a co-founder and member of ${external(c.contact.lab,'Nabla Lab')}, an open, independent, and curiosity-driven research community, embracing the AI era through collaboration, intellectual freedom, and a shared passion for science and engineering. You are welcome to explore!</p>
+      <p class="hero-bio">I am a co-founder and member of ${external(c.contact.lab,'Nabla Lab')}, an open, independent, and curiosity-driven research community. We share a passion for science and engineering, value collaboration, and embrace the opportunities and challenges of the AI era.</p>
     </div>
     <div class="hero-image">
       <figure class="portrait">
