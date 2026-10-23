@@ -43,6 +43,7 @@ if (album && albumTrigger && albumData) {
   const thumbnails = [...album.querySelectorAll('.album-thumbnail')];
   let index = 0;
   let displayedIndex = 0;
+  let direction = 1;
   let changing = false;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   // Decode before displaying, so the existing photograph stays visible on slow connections.
@@ -52,7 +53,7 @@ if (album && albumTrigger && albumData) {
     return preload.decode().then(() => true, () => false);
   });
 
-  const crossfade = async (current, photo, animate) => {
+  const slidePhoto = async (current, photo, animate, step) => {
     const incoming = current.cloneNode();
     incoming.src = photo.src;
     incoming.alt = photo.alt;
@@ -62,11 +63,16 @@ if (album && albumTrigger && albumData) {
     incoming.setAttribute('aria-hidden', 'true');
     current.after(incoming);
     if (animate && !reducedMotion.matches && incoming.animate) {
-      const transition = incoming.animate([{opacity:0},{opacity:1}], {
-        duration: 480, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'both'
-      });
-      await transition.finished;
-      transition.cancel();
+      const timing = {duration: 520, easing: 'cubic-bezier(.32,.72,0,1)', fill: 'both'};
+      const arriving = incoming.animate([
+        {translate:`${step * 100}% 0`}, {translate:'0 0'}
+      ], timing);
+      const departing = current.animate([
+        {translate:'0 0'}, {translate:`${step * -100}% 0`}
+      ], timing);
+      await Promise.all([arriving.finished, departing.finished]);
+      arriving.cancel();
+      departing.cancel();
     }
     current.remove();
     incoming.removeAttribute('aria-hidden');
@@ -77,20 +83,21 @@ if (album && albumTrigger && albumData) {
     if (changing) return;
     changing = true;
     try {
-      // Finish one fade at a time; rapid clicks coalesce to the latest requested photo.
+      // Finish one slide at a time; rapid clicks coalesce to the latest requested photo.
       while (displayedIndex !== index) {
         const target = index;
         const loaded = await ready[target];
         if (target !== index) continue;
         if (!loaded) { index = displayedIndex; break; }
         const photo = photos[target];
+        const step = direction;
         caption.textContent = photo.caption;
         portraitPlace.textContent = photo.caption;
         counter.textContent = `${target + 1} / ${photos.length}`;
         thumbnails.forEach((thumbnail,i) => thumbnail.setAttribute('aria-pressed',String(i === target)));
         [portraitImage, image] = await Promise.all([
-          crossfade(portraitImage, photo, true),
-          crossfade(image, photo, album.open)
+          slidePhoto(portraitImage, photo, true, step),
+          slidePhoto(image, photo, album.open, step)
         ]);
         displayedIndex = target;
       }
@@ -100,6 +107,7 @@ if (album && albumTrigger && albumData) {
   };
 
   const showPhoto = next => {
+    direction = next < index ? -1 : 1;
     index = (next + photos.length) % photos.length;
     void renderPhoto();
   };

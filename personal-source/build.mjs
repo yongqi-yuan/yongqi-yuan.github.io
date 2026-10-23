@@ -44,7 +44,7 @@ const album = `<dialog class="photo-album" id="photo-album" aria-labelledby="alb
   <div class="album-header"><h2 id="album-title">Photographs</h2><div class="album-header-actions"><span class="album-counter" aria-live="polite" aria-atomic="true">1 / ${albumPhotos.length}</span><button class="album-close" type="button" aria-label="Close photo album" autofocus>×</button></div></div>
   <div class="album-stage">
     <button class="album-previous" type="button" aria-label="Previous photo">←</button>
-    <img class="album-image" src="${esc(c.portrait.src)}" width="${c.portrait.width}" height="${c.portrait.height}" alt="${esc(c.portrait.alt)}" style="object-position:${esc(c.portrait.objectPosition)}">
+    <div class="album-viewport"><img class="album-image" src="${esc(c.portrait.src)}" width="${c.portrait.width}" height="${c.portrait.height}" alt="${esc(c.portrait.alt)}" style="object-position:${esc(c.portrait.objectPosition)}"></div>
     <button class="album-next" type="button" aria-label="Next photo">→</button>
   </div>
   <div class="album-details"><h3 class="album-caption">${esc(c.portrait.caption)}</h3></div>
