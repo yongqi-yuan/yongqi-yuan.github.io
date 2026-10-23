@@ -87,3 +87,10 @@ html.album-open,html.album-open body{overflow:hidden}
 #joint-programme-note{scroll-margin-top:110px}
 @media(max-width:600px){.brand{gap:10px}.portrait figcaption{min-height:50px;padding:0 10px 0 15px}.portrait-place{font-size:13px}.album-stage{height:min(52dvh,calc((100vw - 26px)*1.25))}}
 @media print{.portrait-next{display:none}}
+
+/* Fixed photo frames and overlapping images keep fades free of layout movement. */
+.portrait-trigger{aspect-ratio:4/5;overflow:hidden;background:#eaf0f3}
+.portrait .portrait-photo{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:4/5;object-fit:cover}
+.album-stage{overflow:hidden}
+.album-image{position:absolute;top:0;left:50%;transform:translateX(-50%)}
+@media print{.portrait-trigger{overflow:visible}}

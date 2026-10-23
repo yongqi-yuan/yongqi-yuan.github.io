@@ -34,32 +34,74 @@ const albumTrigger = document.querySelector('.portrait-trigger');
 const albumData = document.querySelector('#photo-album-data');
 if (album && albumTrigger && albumData) {
   const photos = JSON.parse(albumData.textContent);
-  const image = album.querySelector('.album-image');
+  let image = album.querySelector('.album-image');
   const caption = album.querySelector('.album-caption');
-  const portraitImage = document.querySelector('.portrait-photo');
+  let portraitImage = document.querySelector('.portrait-photo');
   const portraitPlace = document.querySelector('.portrait-place');
   const portraitNext = document.querySelector('.portrait-next');
   const counter = album.querySelector('.album-counter');
   const thumbnails = [...album.querySelectorAll('.album-thumbnail')];
   let index = 0;
+  let displayedIndex = 0;
+  let changing = false;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // Decode before displaying, so the existing photograph stays visible on slow connections.
+  const ready = photos.map(photo => {
+    const preload = new Image();
+    preload.src = photo.src;
+    return preload.decode().then(() => true, () => false);
+  });
+
+  const crossfade = async (current, photo, animate) => {
+    const incoming = current.cloneNode();
+    incoming.src = photo.src;
+    incoming.alt = photo.alt;
+    incoming.width = photo.width;
+    incoming.height = photo.height;
+    incoming.style.objectPosition = photo.objectPosition || '50% 42%';
+    incoming.setAttribute('aria-hidden', 'true');
+    current.after(incoming);
+    if (animate && !reducedMotion.matches && incoming.animate) {
+      const transition = incoming.animate([{opacity:0},{opacity:1}], {
+        duration: 480, easing: 'cubic-bezier(.22,.61,.36,1)', fill: 'both'
+      });
+      await transition.finished;
+      transition.cancel();
+    }
+    current.remove();
+    incoming.removeAttribute('aria-hidden');
+    return incoming;
+  };
+
+  const renderPhoto = async () => {
+    if (changing) return;
+    changing = true;
+    try {
+      // Finish one fade at a time; rapid clicks coalesce to the latest requested photo.
+      while (displayedIndex !== index) {
+        const target = index;
+        const loaded = await ready[target];
+        if (target !== index) continue;
+        if (!loaded) { index = displayedIndex; break; }
+        const photo = photos[target];
+        caption.textContent = photo.caption;
+        portraitPlace.textContent = photo.caption;
+        counter.textContent = `${target + 1} / ${photos.length}`;
+        thumbnails.forEach((thumbnail,i) => thumbnail.setAttribute('aria-pressed',String(i === target)));
+        [portraitImage, image] = await Promise.all([
+          crossfade(portraitImage, photo, true),
+          crossfade(image, photo, album.open)
+        ]);
+        displayedIndex = target;
+      }
+    } finally {
+      changing = false;
+    }
+  };
 
   const showPhoto = next => {
     index = (next + photos.length) % photos.length;
-    const photo = photos[index];
-    image.src = photo.src;
-    image.alt = photo.alt;
-    image.width = photo.width;
-    image.height = photo.height;
-    image.style.objectPosition = photo.objectPosition || '50% 42%';
-    caption.textContent = photo.caption;
-    portraitImage.src = photo.src;
-    portraitImage.alt = photo.alt;
-    portraitImage.width = photo.width;
-    portraitImage.height = photo.height;
-    portraitImage.style.objectPosition = photo.objectPosition || '50% 42%';
-    portraitPlace.textContent = photo.caption;
-    counter.textContent = `${index + 1} / ${photos.length}`;
-    thumbnails.forEach((thumbnail,i) => thumbnail.setAttribute('aria-pressed',String(i === index)));
+    void renderPhoto();
   };
 
   albumTrigger.addEventListener('click', () => {
