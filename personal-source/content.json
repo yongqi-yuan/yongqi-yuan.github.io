@@ -1,0 +1,127 @@
+{
+  "name": "Yongqi Yuan",
+  "chineseName": "袁泳棋",
+  "description": "Yongqi Yuan, graduate student in Engineering Science at the University of Oxford. Fluid mechanics, nonlinear wave forces and wave–structure interaction.",
+  "qualification": [
+    {
+      "title": "BEng (Hons) in Naval Architecture with Ocean Engineering",
+      "institution": "University of Strathclyde",
+      "url": "https://www.strath.ac.uk/engineering/navalarchitectureoceanmarineengineering/",
+      "start": "2022-09",
+      "end": "2026-06",
+      "note": "First Class Honours"
+    },
+    {
+      "title": "BEng in Naval Architecture and Ocean Engineering",
+      "institution": "Harbin Institute of Technology",
+      "url": "https://www.hit.edu.cn/",
+      "start": "2022-08",
+      "end": "2026-06",
+      "note": ""
+    }
+  ],
+  "experience": [
+    {
+      "title": "Graduate Student",
+      "institution": "Department of Engineering Science & Lady Margaret Hall, University of Oxford",
+      "location": "Oxford, England, UK",
+      "start": "2026-10",
+      "end": null,
+      "note": "DPhil in Engineering Science · Probationary Research Student (PRS)",
+      "jointProgramme": false
+    },
+    {
+      "title": "Undergraduate Student",
+      "institution": "Department of Naval Architecture, Ocean and Marine Engineering, University of Strathclyde",
+      "location": "Glasgow, Scotland, UK",
+      "start": "2022-09",
+      "end": "2026-06",
+      "note": "",
+      "jointProgramme": true
+    },
+    {
+      "title": "Undergraduate Student",
+      "institution": "School of Ocean Engineering, Weihai Campus, Harbin Institute of Technology",
+      "location": "Weihai, Shandong, China",
+      "start": "2022-08",
+      "end": "2026-06",
+      "note": "",
+      "jointProgramme": true
+    }
+  ],
+  "research": [
+    "Fluid mechanics",
+    "Nonlinear wave forces",
+    "Wave–structure interaction",
+    "Computational fluid dynamics (CFD) and theoretical analysis"
+  ],
+  "awards": [
+    {
+      "name": "Reid Birrell Prize",
+      "institution": "University of Strathclyde",
+      "date": "2026-06",
+      "description": "Awarded to a final-year BEng student for overall distinction in naval architecture."
+    },
+    {
+      "name": "Outstanding Undergraduate Thesis",
+      "institution": "Harbin Institute of Technology",
+      "date": "2026-06",
+      "description": ""
+    },
+    {
+      "name": "Outstanding Graduate",
+      "institution": "Harbin Institute of Technology",
+      "date": "2026-06",
+      "description": ""
+    },
+    {
+      "name": "Global Elite Development Programme Scholarship for Doctoral Study",
+      "institution": "Harbin Institute of Technology",
+      "date": "2026-05",
+      "description": ""
+    },
+    {
+      "name": "Most Influential Graduates",
+      "institution": "Harbin Institute of Technology, Weihai",
+      "date": "2026-05",
+      "description": "One of 10 awardees in the class of 2026 at HIT Weihai."
+    }
+  ],
+  "contact": {
+    "academicEmail": "yongqi.yuan@eng.ox.ac.uk",
+    "personalEmail": "yongqi.yuan@outlook.com",
+    "github": "https://github.com/yongqi-yuan",
+    "scholar": "https://scholar.google.co.uk/citations?user=y1Ub2esAAAAJ&hl=en",
+    "orcid": "https://orcid.org/0009-0004-7632-3743",
+    "lab": "https://nabla.ac.cn/"
+  },
+  "postNominals": "BEng, BEng (Hons)",
+  "portrait": {
+    "src": "/assets/yongqi-yuan-matriculation.webp",
+    "width": 1400,
+    "height": 2100,
+    "alt": "Yongqi Yuan in academic dress on Matriculation Day in Oxford.",
+    "caption": "Oxford",
+    "location": "",
+    "objectPosition": "50% 42%"
+  },
+  "experienceNote": "This is a joint undergraduate programme between Harbin Institute of Technology and the University of Strathclyde.",
+  "educationPhotos": [
+    {
+      "src": "/assets/yongqi-yuan-hit.webp",
+      "alt": "Yongqi Yuan in graduation dress at Harbin Institute of Technology, Weihai Campus.",
+      "caption": "Weihai",
+      "width": 1000,
+      "height": 1500,
+      "objectPosition": "50% 12%"
+    },
+    {
+      "src": "/assets/yongqi-yuan-strathclyde.webp",
+      "alt": "Yongqi Yuan beside a wave tank at the University of Strathclyde.",
+      "caption": "Glasgow",
+      "width": 1000,
+      "height": 1500,
+      "objectPosition": "50% 30%"
+    }
+  ]
+}
