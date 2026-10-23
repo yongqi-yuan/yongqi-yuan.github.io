@@ -63,7 +63,7 @@ if (album && albumTrigger && albumData) {
     incoming.setAttribute('aria-hidden', 'true');
     current.after(incoming);
     if (animate && !reducedMotion.matches && incoming.animate) {
-      const timing = {duration: 520, easing: 'cubic-bezier(.32,.72,0,1)', fill: 'both'};
+      const timing = {duration: 680, easing: 'cubic-bezier(.45,0,.2,1)', fill: 'both'};
       const arriving = incoming.animate([
         {translate:`${step * 100}% 0`}, {translate:'0 0'}
       ], timing);
